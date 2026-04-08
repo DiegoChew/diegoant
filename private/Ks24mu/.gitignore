@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+
+# Data
+Output/
+*.parquet
+
+# Plots
+*.png
+*.pdf
+
+# LaTeX
+*.aux
+*.log
+*.out
+
+# Misc
+*.tmp
+
+build/
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.bbl
+*.blg

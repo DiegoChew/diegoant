@@ -1,0 +1,366 @@
+
+
+\documentclass[12pt,a4paper]{article}
+
+% Paquetes básicos
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}      % Para imágenes
+\usepackage{booktabs}      % Para tablas elegantes
+\usepackage{amsmath, amssymb}  % Para fórmulas
+\usepackage{geometry}      % Para márgenes
+\usepackage{hyperref}      % Para enlaces internos y externos
+\usepackage{subcaption}
+% \usepackage{luacode}
+% Márgenes
+% \geometry{
+%   top=2.5cm,
+%   bottom=2.5cm,
+%   left=2.5cm,
+%   right=2.5cm
+% }
+\geometry{
+  a4paper,
+  landscape,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.5cm,
+  right=2.5cm
+}
+% Título y autor
+\title{Analysis of $K_S \rightarrow \mu^+\mu^-\mu^+\mu^-$ Decay}
+\author{Sergio Arguedas Cuendis,\\ Daniel Guillermo Elizondo Blanco, \\Diego Antonio Garcia Chew}
+\date{\today}
+
+\begin{document}
+% \input{Output/latex/efficiency_macros.tex}
+\maketitle
+
+\begin{abstract}
+This document presents the efficiencies of $K_S \rightarrow \mu^+\mu^-\mu^+\mu^-$ decay 
+and contrast diferents cuts.
+\end{abstract}
+
+
+\newpage
+\section{Events}
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrr}
+\hline
+ No. Events    &   w40\_42 &   w37\_39 &   w35\_37 &   w31\_34 \\
+\hline
+ Generated     &   2052744 &    990688 &    991063 &   1984879 \\
+ Reco          &     76343 &     38512 &     38451 &     76825 \\
+ HLT2          &     26101 &     13244 &     13434 &     26852 \\
+ HLT1          &     10742 &      5424 &      5493 &     10651 \\
+ SelectedMuon  &      9099 &      4637 &      4645 &      9141 \\
+ SelectedPID-3 &      7691 &      4054 &      4053 &      8071 \\
+ ProbNNPID-3   &      7329 &      3897 &      3856 &      7657 \\
+ \hline        &           &           &           &           \\
+ SelectedPID0  &      6533 &      3524 &      3508 &      7031 \\
+ ProbNNPID0    &      6330 &      3429 &      3386 &      6778 \\
+\hline         &            &         &          &     \\
+ SelectedPID1.56  &      5636 &      3079 &      3100 &      6229 \\
+ ProbNNPID1.56    &      5492 &      3011 &      3020 &      6061 \\
+\hline
+\end{tabular}
+\caption{Cutflow of events.}
+\end{table}
+\begin{itemize}
+    \item \textbf{HLT2} $\to$ truth\_matching
+    \item \textbf{HLT1} $\to$ KS\_Hlt1DiMuonSoftDecision\_TOS $== 1$
+    \item \textbf{SelectedMuon} $\to$ LN\_ISMUON $== 1$
+    \item \textbf{SelectedPID-3} $\to$ LN\_PID\_MU $> -3$
+    \item \textbf{SelectedPID0} $\to$ LN\_PID\_MU $> 0$
+    \item \textbf{ProbNNPID-3, ProbNNPID0} $\to$ L1\_PROBNN\_MU $> 0.1$
+\end{itemize}
+\newpage
+%--------------------------------
+\section{Efficiencies}
+% \begin{center}
+% \input{Output/tables/efficiencies.tex}  % tu tabla de efficiencies
+% \end{center}
+\begin{table}[h]
+\centering
+\begin{tabular}{llllll}
+\hline
+ Efficiency    & w40\_42                 & w37\_39                 & w35\_37                 & w31\_34                 & All                     \\
+\hline
+ Reco          & 0.037191 $\pm$ 0.000132 & 0.038874 $\pm$ 0.000194 & 0.038798 $\pm$ 0.000194 & 0.038705 $\pm$ 0.000137 & 0.038392 $\pm$ 0.000083 \\
+ HLT2          & 0.341891 $\pm$ 0.001717 & 0.343893 $\pm$ 0.002420 & 0.349380 $\pm$ 0.002431 & 0.349522 $\pm$ 0.001720 & 0.346171 $\pm$ 0.001051 \\
+ HLT1          & 0.411555 $\pm$ 0.003046 & 0.409544 $\pm$ 0.004273 & 0.408888 $\pm$ 0.004242 & 0.396656 $\pm$ 0.002985 & 0.406661 $\pm$ 0.001845 \\
+ SelectedMuon  & 0.847049 $\pm$ 0.003473 & 0.854904 $\pm$ 0.004782 & 0.845622 $\pm$ 0.004875 & 0.858229 $\pm$ 0.003380 & 0.851451 $\pm$ 0.002093 \\
+ SelectedPID-3 & 0.845258 $\pm$ 0.003791 & 0.874272 $\pm$ 0.004869 & 0.872551 $\pm$ 0.004893 & 0.882945 $\pm$ 0.003363 & 0.868756 $\pm$ 0.002141 \\
+ ProbNNPID-3   & 0.952932 $\pm$ 0.002415 & 0.961273 $\pm$ 0.003030 & 0.951394 $\pm$ 0.003378 & 0.948705 $\pm$ 0.002455 & 0.953576 $\pm$ 0.001424 \\
+ TotalPID-3    & 0.003570 $\pm$ 0.000042 & 0.003934 $\pm$ 0.000063 & 0.003891 $\pm$ 0.000063 & 0.003858 $\pm$ 0.000044 & 0.003812 $\pm$ 0.000027 \\
+ \hline        &                         &                         &                         &                         &                         \\
+ SelectedPID0  & 0.717991 $\pm$ 0.004717 & 0.759974 $\pm$ 0.006272 & 0.755221 $\pm$ 0.006309 & 0.769172 $\pm$ 0.004407 & 0.750589 $\pm$ 0.002748 \\
+ ProbNNPID0    & 0.968927 $\pm$ 0.002147 & 0.973042 $\pm$ 0.002728 & 0.965222 $\pm$ 0.003093 & 0.964016 $\pm$ 0.002221 & 0.967802 $\pm$ 0.001288 \\
+ TotalPID0     & 0.003084 $\pm$ 0.000039 & 0.003461 $\pm$ 0.000059 & 0.003417 $\pm$ 0.000059 & 0.003415 $\pm$ 0.000041 & 0.003343 $\pm$ 0.000025 \\
+\hline        &                         &                         &                         &                         &                         \\
+ SelectedPID1.56  & 0.619409 $\pm$ 0.005090 & 0.664007 $\pm$ 0.006936 & 0.667384 $\pm$ 0.006913 & 0.681435 $\pm$ 0.004873 & 0.658059 $\pm$ 0.003016 \\
+ ProbNNPID1.56    & 0.974450 $\pm$ 0.002102 & 0.977915 $\pm$ 0.002648 & 0.974194 $\pm$ 0.002848 & 0.973029 $\pm$ 0.002053 & 0.974897 $\pm$ 0.001218 \\
+ TotalPID1.56     & 0.002675 $\pm$ 0.000036 & 0.003039 $\pm$ 0.000055 & 0.003047 $\pm$ 0.000055 & 0.003054 $\pm$ 0.000039 & 0.002952 $\pm$ 0.000023 \\
+ \hline
+\end{tabular}
+\caption{.}
+\end{table}
+
+%--------------------------------
+\newpage 
+\section{Data Cuts}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llllll}
+\hline
+ data events         & HLT2     & HLT1    & SelectedMuon & Selected PID$>$1.56  &  Selected ProbNN$>$0.57\\
+\hline 
+ 24\_up\_c2          & 16184349 & 136282  & 15315        & 112   & 75 \\
+ 24\_up\_c3          & 8807840  & 76222   & 8783         & 65    & 50 \\
+ 24\_up\_c4          & 3857049  & 42611   & 5225         & 22     & 13\\
+ 24\_down\_c3        & 7339242  & 63464   & 7201         & 50     & 33\\
+ 24\_down\_c4        & 6098370  & 72331   & 9119         & 40 & 24\\
+ 25\_up\_c1          & 68       & 12      & 12           & 1  & 1\\
+ 25\_down\_c1        & 15       & 5       & 5            & 1  & 0\\
+ 25\_down\_c2        & 194      & 79      & 79           & 3  & 3\\
+ TOTAL DATA          & 42287127 & 391006  & 391006       & 294 & 199\\
+\hline 
+\end{tabular}
+\caption{Data events cuts}
+\end{table}
+
+Efficiency HLT1: 0.009246454600710993\\
+Efficiency Selected Muon: 0.11697774458703958\\
+Efficiency Selected PID>1.56: 0.006427774984149194\\
+Efficiency Selected ProbNN>0.57: 0.6768707482993197
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{Events}
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrrr}
+\hline
+ No. Events    &   w40\_42 &   w37\_39 &   w35\_37 &   w31\_34  & total \\
+\hline
+ Generated     &   2052744 &    990688 &    991063 &   1984879  & 6019374\\
+ Reco          &     76343 &     38512 &     38451 &     76825  & 230131\\
+ HLT2          &     26101 &     13244 &     13434 &     26852  & 79631\\
+ HLT1          &     10742 &      5424 &      5493 &     10651  & 32310\\
+ SelectedMuon  &      9099 &      4637 &      4645 &      9141  & 27522\\
+ SelectedPID0  &      6533 &      3524 &      3508 &      7031  & 20596\\
+ SelectedAng   &      6337 &      3415 &      3394 &      6794  & 19940\\
+\hline
+\end{tabular}
+\caption{Cutflow of events.}
+\end{table}
+\begin{itemize}
+    \item \textbf{HLT2} $\to$ truth\_matching
+    \item \textbf{HLT1} $\to$ KS\_Hlt1DiMuonSoftDecision\_TOS $== 1$
+    \item \textbf{SelectedMuon} $\to$ LN\_ISMUON $== 1$
+    \item \textbf{SelectedPID0} $\to$ LN\_PID\_MU $> 0$
+    \item \textbf{SelectedAng} $\to$ theta\_pq $> 0.0015$
+\end{itemize}
+\newpage
+%--------------------------------
+\section{Efficiencies}
+% \begin{center}
+% \input{Output/tables/efficiencies.tex}  % tu tabla de efficiencies
+% \end{center}
+\begin{table}[h]
+\centering
+\begin{tabular}{llllll}
+\hline
+ Efficiency    & w40\_42                 & w37\_39                 & w35\_37                 & w31\_34                 & All                     \\
+\hline
+ Reco          & 0.037191 $\pm$ 0.000132 & 0.038874 $\pm$ 0.000194 & 0.038798 $\pm$ 0.000194 & 0.038705 $\pm$ 0.000137 & 0.038392 $\pm$ 0.000083 \\
+ HLT2          & 0.341891 $\pm$ 0.001717 & 0.343893 $\pm$ 0.002420 & 0.349380 $\pm$ 0.002431 & 0.349522 $\pm$ 0.001720 & 0.346171 $\pm$ 0.001051 \\
+ HLT1          & 0.411555 $\pm$ 0.003046 & 0.409544 $\pm$ 0.004273 & 0.408888 $\pm$ 0.004242 & 0.396656 $\pm$ 0.002985 & 0.406661 $\pm$ 0.001845 \\
+ SelectedMuon  & 0.847049 $\pm$ 0.003473 & 0.854904 $\pm$ 0.004782 & 0.845622 $\pm$ 0.004875 & 0.858229 $\pm$ 0.003380 & 0.851451 $\pm$ 0.002093 \\
+ SelectedPID0  & 0.717991 $\pm$ 0.004717 & 0.759974 $\pm$ 0.006272 & 0.755221 $\pm$ 0.006309 & 0.769172 $\pm$ 0.004407 & 0.748346 $\pm$ 0.002616 \\
+ SelectedAng   & 0.969998 $\pm$ 0.002110 & 0.969069 $\pm$ 0.002916 & 0.967503 $\pm$ 0.002993 & 0.966292 $\pm$ 0.002152 & 0.968149 $\pm$ 0.001224 \\
+ TotalPID0     & 0.003087 $\pm$ 0.000038 & 0.003447 $\pm$ 0.000059 & 0.003424 $\pm$ 0.000059 & 0.003422 $\pm$ 0.000041 & 0.003312 $\pm$ 0.000023 \\
+\hline        
+\end{tabular}
+\caption{.}
+\end{table}
+
+%--------------------------------
+\newpage 
+\section{Data Cuts}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llllll}
+\hline
+ data events         & HLT2     & HLT1    & SelectedMuon & Selected PID$>$1.56  &  Selected ProbNN$>$0.57\\
+\hline 
+ 24\_up\_c2          & 16184349 & 136282  & 15315        & 112   & 75 \\
+ 24\_up\_c3          & 8807840  & 76222   & 8783         & 65    & 50 \\
+ 24\_up\_c4          & 3857049  & 42611   & 5225         & 22     & 13\\
+ 24\_down\_c3        & 7339242  & 63464   & 7201         & 50     & 33\\
+ 24\_down\_c4        & 6098370  & 72331   & 9119         & 40 & 24\\
+ 25\_up\_c1          & 68       & 12      & 12           & 1  & 1\\
+ 25\_down\_c1        & 15       & 5       & 5            & 1  & 0\\
+ 25\_down\_c2        & 194      & 79      & 79           & 3  & 3\\
+ TOTAL DATA          & 42287127 & 391006  & 391006       & 294 & 199\\
+\hline 
+\end{tabular}
+\caption{Data events cuts}
+\end{table}
+
+Efficiency HLT1: 0.009246454600710993\\
+Efficiency Selected Muon: 0.11697774458703958\\
+Efficiency Selected PID>1.56: 0.006427774984149194\\
+Efficiency Selected ProbNN>0.57: 0.6768707482993197
+
+\newpage
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrr}
+\hline
+ No. Events    &   total eff & Events mc & Events data\\
+\hline
+ SelectedPID-3 & 0.867269 & 23869     & 726 \\
+ angle  0.0018 & 0.947505 & 22616     & 15\\
+ \hline
+ overal eff    & 0.003757 &           & \\
+ \hline        &          &           \\
+ SelectedPID-3 & 0.867269 & 23869     & 726 \\
+ angle  0.0015 & 0.965939 & 23056     & 21\\
+ \hline
+ overal eff    & 0.003757 &           & \\
+ \hline        &          &           \\
+ SelectedPID-2 & 0.834133 & 22957     & 596 \\
+ angle  0.0018 & 0.948468 & 21774     & 6\\
+ \hline
+ overal eff    & 0.003617 &           & \\
+ \hline        &          &           \\
+ SelectedPID-2 & 0.834133 & 22957     & 596 \\
+ angle  0.0015 & 0.965939 & 22185     & 7\\
+ \hline
+ overal eff    & 0.003686 &           & \\
+ \hline        &          &           \\
+ SelectedPID-1 & 0.795109 & 21883     & 495 \\
+ angle  0.0018 & 0.950601 & 20802     & 2\\
+ \hline
+ overal eff    & 0.003456 &           & \\
+ \hline        &          &           \\
+ SelectedPID-1 & 0.795109 & 21883     & 495 \\
+ angle  0.0015 & 0.967783 & 21178     & 2\\
+ \hline
+ overal eff    & 0.003518 &           & \\
+ \hline        &          &           \\
+ SelectedPID0  & 0.748347 & 20596     & 404\\
+ angle  0.0018 & 0.951738 & 19602     & 1\\
+ \hline
+ overal eff    & 0.003256 &           & \\
+ \hline        &          &           \\
+ SelectedPID0  & 0.748347 & 20596     & 404 \\
+ angle  0.0015 & 0.968149 & 19940     & 1\\
+ \hline
+ overal eff    & 0.003313 &           & \\
+\hline
+\end{tabular}
+\caption{Cutflow of events.}
+\end{table}
+\newpage 
+\section{Mass Distributions}
+Invariant mass distributions of $K_S$ candidates:
+
+
+\begin{figure}[h!]
+    \centering
+    
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w40_42_v1.png}
+        \caption{w40\_42, PID $>-3$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w40_42_v2.png}
+        \caption{w40\_42, PID $>0$}
+    \end{subfigure}
+    
+    % \vspace{0.2cm}
+    
+    % \begin{subfigure}{0.4\textwidth}
+    %     \centering
+    %     \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w35_37_v1.png}
+    %     \caption{w35\_37}
+    % \end{subfigure}
+    % \hfill
+    % \begin{subfigure}{0.4\textwidth}
+    %     \centering
+    %     \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w31_34_v1.png}
+    %     \caption{w31\_34}
+    % \end{subfigure}
+    
+    \caption{Mass distribution para diferentes versiones}
+\end{figure}
+
+% \begin{figure}[h!]
+%     \centering
+    
+%     \begin{subfigure}{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w40_42_v2.png}
+%         \caption{w40\_42}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w37_39_v2.png}
+%         \caption{w37\_39}
+%     \end{subfigure}
+    
+%     \vspace{0.2cm}
+    
+%     \begin{subfigure}{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w35_37_v2.png}
+%         \caption{w35\_37}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Output/plots/events/KS_mass_flow_w31_34_v2.png}
+%         \caption{w31\_34}
+%     \end{subfigure}
+    
+%     \caption{Mass distribution para diferentes versiones}
+% \end{figure}
+
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{Output/plots/events/KS_mass_flow_w40_42_v2.png}
+%     \caption{Mass distribution for version PID>0}
+% \end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Output/plots/events/KS_mass_flow_w31_34_probNN_PID3_PID0.png}
+    \caption{Contrast number of events}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Output/plots/events/KS_mass_flow_w31_34_Selected_PID3_PID0.png}
+    \caption{Contrast number of events}
+\end{figure}
+%--------------------------------
+% \section{Conclusions}
+% \begin{itemize}
+%     \item Reconstruction efficiencies are consistent across versions.
+%     \item HLT and offline selections show expected behavior.
+%     \item ProbNN selection improves purity while keeping efficiency.
+%     \item Future work: optimize PID cuts for better signal-background separation.
+% \end{itemize}
+
+%--------------------------------
+\end{document}
